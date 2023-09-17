@@ -6,13 +6,13 @@
 #What percentage of the requests were redirected elsewhere (any 3xx codes)?
 #What was the most-requested file?
 #What was the least-requested file?
-#How many requets were made in 6 months
+#How many requests were made in 6 months
 #How many total requests were made
 
 
 #IMPORTANT THINGS TO RUN BEFORE RUNNING CODE: 
-#Make sure that you have all necessary files are downloaded
-#Open your preferred terminal and run this:
+#Make sure that you have all necessary files downloaded
+#Open your preferred terminal and run one of the following commands:
 #IF you're using WINDOWS: py -m pip install requests
 #IF you're using MAC: python3 -m pip install requests 
 #IF you're using Linux: pip install requests
@@ -21,10 +21,10 @@
 
 
 import requests
-from datetime import date
 from datetime import datetime
 from datetime import timedelta
 import re
+import collections
 
 url = 'https://s3.amazonaws.com/tcmg476/http_access_log'
 r = requests.get(url, allow_redirects=True)
@@ -193,7 +193,7 @@ file.close()
 
 # Question 5: the most-requested file
 
-import collections
+
 
 file = open("python.txt", "r")
 
@@ -217,7 +217,6 @@ file.close()
 
 # Question 6: the least-requested file
 
-import collections
 
 file = open("python.txt", "r")
 

@@ -170,6 +170,9 @@ for line in file:
 
 file.close()
 
+# doesn't print requests for last month
+# printed two requests for Jul/1995, but one said there was 0 requests
+
 
 
 

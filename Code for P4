@@ -114,7 +114,7 @@ for line in file:
     if (line_date == first_date) or (line_date < second_week):
         Q2a_dates += 1
     else: 
-        print("There were", Q1_dates, "requests on the week of", first_date.strftime("%b/%d"))
+        print("There were", Q2a_dates, "requests on the week of", first_date.strftime("%b/%d"))
         Q2a_dates = 0
         first_date += delta
         
@@ -161,7 +161,7 @@ file.close()
 
 
 
-# Question 4: percentage of successful requests 
+# Question 4: percentage of redirected requests
 
 # begins process of extracting date from each line
 file = open("python.txt", "r")
@@ -184,7 +184,7 @@ for line in file:
 percent = (Q4_lines/total_requests)*100
 final_percent = str(round(percent,2))
         
-print("Percentage of successful requests:", final_percent)
+print("Percentage of redirected requests:", final_percent)
 
 file.close()
 

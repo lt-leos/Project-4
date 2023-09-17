@@ -233,5 +233,3 @@ least_common = collections.Counter(clean_log).most_common()[-1]
 print("The least-requested file was", str(least_common[0]) + "and was requested", str(least_common[1]), "time")
 
 file.close()
-
-print("Total number of requests:", total_requests)

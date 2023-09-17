@@ -6,13 +6,13 @@
 #What percentage of the requests were redirected elsewhere (any 3xx codes)?
 #What was the most-requested file?
 #What was the least-requested file?
-#How many requets were made in 6 months
+#How many requests were made in 6 months
 #How many total requests were made
 
 
 #IMPORTANT THINGS TO RUN BEFORE RUNNING CODE: 
-#Make sure that you have all necessary files are downloaded
-#Open your preferred terminal and run this:
+#Make sure that you have all necessary files downloaded
+#Open your preferred terminal and run one of the following commands:
 #IF you're using WINDOWS: py -m pip install requests
 #IF you're using MAC: python3 -m pip install requests 
 #IF you're using Linux: pip install requests
@@ -21,11 +21,12 @@
 
 
 import requests
-from datetime import date
 from datetime import datetime
 from datetime import timedelta
+from datetime import date
 import re
 import os
+import collections
 
 if os.path.exists('python.txt') != True: 
     url = 'https://s3.amazonaws.com/tcmg476/http_access_log'
@@ -129,6 +130,47 @@ file.close()
 
 # Question 2b: requests for each month
 
+with open("python.txt", "r") as textfile:
+    first_line = textfile.readlines()[1]
+    first_datetime = first_line.split()[3]
+    clean_datetime = datetime.strptime(first_datetime, '[%d/%b/%Y:%H:%M:%S')
+    first_date = clean_datetime.date()
+    first_month = first_date.month
+    first_year = first_date.year
+    
+# begins process of extracting date from each line
+file = open("python.txt", "r")
+count = 0
+Q2b_dates = 0
+
+for line in file:
+    count += 1
+    
+    # removes lines without date
+    if "index.html" in line:
+        continue
+    
+    # searches for datetime and extracts date only
+    date_str = re.search('\d{2}/\D{3}/\d{4}', line)
+    clean_datetime = datetime.strptime(date_str.group(), '%d/%b/%Y')
+    line_date = clean_datetime.date()
+    line_month = line_date.month
+    line_year = line_date.year
+
+    delta = timedelta(weeks=4)
+ #   second_week = first_date + delta
+    
+    if (line_month == first_month) and (line_year == first_year):
+        Q2b_dates += 1
+    else: 
+        print("There were", Q2b_dates, "requests in the month of", first_date.strftime("%b/%Y"))
+        Q2b_dates = 0
+        first_date += delta
+        first_month = first_date.month
+        first_year = first_date.year
+
+file.close()
+
 
 
 # Question 3: percentage of unsuccessful requests 
@@ -193,7 +235,7 @@ file.close()
 
 # Question 5: the most-requested file
 
-import collections
+
 
 file = open("python.txt", "r")
 
@@ -217,7 +259,6 @@ file.close()
 
 # Question 6: the least-requested file
 
-import collections
 
 file = open("python.txt", "r")
 

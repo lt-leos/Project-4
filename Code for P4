@@ -27,6 +27,8 @@ from datetime import date
 import re
 import os
 import collections
+from dateutil.relativedelta import relativedelta
+
 
 if os.path.exists('python.txt') != True: 
     url = 'https://s3.amazonaws.com/tcmg476/http_access_log'
@@ -75,7 +77,7 @@ for line in file:
     
     delta = timedelta(days=1)
     
-    if line_date == first_date:
+    if line_date == (first_date + 1):
         Q1_dates += 1
     else: 
         print("There were", Q1_dates, "requests on", first_date)
@@ -157,8 +159,7 @@ for line in file:
     line_month = line_date.month
     line_year = line_date.year
 
-    delta = timedelta(weeks=4)
- #   second_week = first_date + delta
+    delta = relativedelta(months=1)
     
     if (line_month == first_month) and (line_year == first_year):
         Q2b_dates += 1

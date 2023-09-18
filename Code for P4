@@ -77,7 +77,7 @@ for line in file:
     
     delta = timedelta(days=1)
     
-    if line_date == (first_date + 1):
+    if line_date == first_date:
         Q1_dates += 1
     else: 
         print("There were", Q1_dates, "requests on", first_date)

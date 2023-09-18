@@ -65,7 +65,9 @@ for line in file:
     count += 1
     
     # removes lines without date
-    if "index.html" in line:
+    if "GET" in line:
+        pass
+    else:
         continue
     
     # searches for datetime and extracts date only
@@ -105,7 +107,9 @@ for line in file:
     count += 1
     
     # removes lines without date
-    if "index.html" in line:
+    if "GET" in line:
+        pass
+    else:
         continue
     
     # searches for datetime and extracts date only
@@ -147,7 +151,9 @@ for line in file:
     count += 1
     
     # removes lines without date
-    if "index.html" in line:
+    if "GET" in line:
+        pass
+    else:
         continue
     
     # searches for datetime and extracts date only
@@ -188,7 +194,9 @@ for line in file:
     count += 1
     
     # removes lines without status codes
-    if "index.html" in line:
+    if "GET" in line:
+        pass
+    else:
         continue
     
     status_codes = line.split()[-2]
@@ -218,7 +226,9 @@ for line in file:
     count += 1
     
     # removes lines without status codes
-    if "index.html" in line:
+    if "GET" in line:
+        pass
+    else:
         continue
     
     status_codes = line.split()[-2]

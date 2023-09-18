@@ -61,6 +61,7 @@ fakedate = 'local - - [12/Nov/1996:14:14:17 -0600] "GET index.html HTTP/1.0" 304
 with open("python.txt", "a") as file:
     file.write("\n")
     file.write(fakedate)
+
 file = open("python.txt")
 total_requests = sum(1 for line in file)
 
@@ -144,7 +145,7 @@ for line in file:
         
 file.close()
 
-# doesn't print requests for last date
+
 
 
 # Question 2b: requests for each month
@@ -188,9 +189,6 @@ for line in file:
         first_year = first_date.year
 
 file.close()
-
-# doesn't print requests for last month
-# printed two requests for Jul/1995, but one said there was 0 requests
 
 
 
@@ -257,8 +255,6 @@ file.close()
 
 # Question 5: the most-requested file
 
-
-
 file = open("python.txt", "r")
 
 clean_log = []
@@ -281,7 +277,6 @@ file.close()
 
 # Question 6: the least-requested file
 
-
 file = open("python.txt", "r")
 
 clean_log = []
@@ -294,6 +289,7 @@ for line in file:
 
 least_common = collections.Counter(clean_log).most_common()[-1]
 print("The least-requested file was", str(least_common[0]) + "and was requested", str(least_common[1]), "time")
+
 
 # Cleanup
 with open("python.txt", "r+") as file:

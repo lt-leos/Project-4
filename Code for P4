@@ -31,6 +31,7 @@ from dateutil.relativedelta import relativedelta
 
 
 if os.path.exists('python.txt') != True: 
+    print("Downloading...")
     url = 'https://s3.amazonaws.com/tcmg476/http_access_log'
     r = requests.get(url, allow_redirects=True)
 
@@ -44,6 +45,13 @@ if os.path.exists('python.txt') != True:
     print("Download Complete!")
 
 print("Extracting data...")
+
+filesize = os.path.getsize('python.txt')
+file = open("python.txt")
+fakedate = 'local - - [12/Nov/1996:14:14:17 -0600] "GET index.html HTTP/1.0" 304 0'
+with open("python.txt", "a") as file:
+    file.write("\n")
+    file.write(fakedate)
 file = open("python.txt")
 total_requests = sum(1 for line in file)
 
@@ -67,9 +75,7 @@ for line in file:
     count += 1
     
     # removes lines without date
-    if "[" in line:
-        pass
-    else:
+    if ("[" in line) != True:
         continue
     
     # searches for datetime and extracts date only
@@ -81,7 +87,7 @@ for line in file:
     
     if line_date == first_date:
         Q1_dates += 1
-    else: 
+    else:
         print("There were", Q1_dates, "requests on", first_date)
         Q1_dates = 0
         first_date += delta
@@ -109,9 +115,7 @@ for line in file:
     count += 1
     
     # removes lines without date
-    if "[" in line:
-        pass
-    else:
+    if ("[" in line) != True:
         continue
     
     # searches for datetime and extracts date only
@@ -153,9 +157,7 @@ for line in file:
     count += 1
     
     # removes lines without date
-    if "[" in line:
-        pass
-    else:
+    if ("[" in line) != True:
         continue
     
     # searches for datetime and extracts date only
@@ -195,9 +197,7 @@ for line in file:
     count += 1
     
     # removes lines without status codes
-    if "[" in line:
-        pass
-    else:
+    if ("[" in line) != True:
         continue
     
     status_codes = line.split()[-2]
@@ -227,9 +227,7 @@ for line in file:
     count += 1
     
     # removes lines without status codes
-    if "[" in line:
-        pass
-    else:
+    if ("[" in line) != True:
         continue
     
     status_codes = line.split()[-2]
@@ -288,4 +286,8 @@ for line in file:
 least_common = collections.Counter(clean_log).most_common()[-1]
 print("The least-requested file was", str(least_common[0]) + "and was requested", str(least_common[1]), "time")
 
+# Cleanup
+with open("python.txt", "r+") as file:
+    file.truncate(filesize)
+print(filesize)
 file.close()

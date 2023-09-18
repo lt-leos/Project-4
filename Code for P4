@@ -292,6 +292,10 @@ with open("python.txt", "r+") as file:
 file.close()
 
 
+
+
+# Separating log file by months
+
 log_file = "python.txt"
 
 # creates a dictionary to hold file handles for each month

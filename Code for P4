@@ -67,7 +67,9 @@ for line in file:
     count += 1
     
     # removes lines without date
-    if "index.html" in line:
+    if "GET" in line:
+        pass
+    else:
         continue
     
     # searches for datetime and extracts date only
@@ -107,7 +109,9 @@ for line in file:
     count += 1
     
     # removes lines without date
-    if "index.html" in line:
+    if "GET" in line:
+        pass
+    else:
         continue
     
     # searches for datetime and extracts date only
@@ -149,7 +153,9 @@ for line in file:
     count += 1
     
     # removes lines without date
-    if "index.html" in line:
+    if "GET" in line:
+        pass
+    else:
         continue
     
     # searches for datetime and extracts date only
@@ -172,6 +178,10 @@ for line in file:
 
 file.close()
 
+# doesn't print requests for last month
+# printed two requests for Jul/1995, but one said there was 0 requests
+
+
 
 
 # Question 3: percentage of unsuccessful requests 
@@ -185,7 +195,9 @@ for line in file:
     count += 1
     
     # removes lines without status codes
-    if "index.html" in line:
+    if "GET" in line:
+        pass
+    else:
         continue
     
     status_codes = line.split()[-2]
@@ -215,7 +227,9 @@ for line in file:
     count += 1
     
     # removes lines without status codes
-    if "index.html" in line:
+    if "GET" in line:
+        pass
+    else:
         continue
     
     status_codes = line.split()[-2]

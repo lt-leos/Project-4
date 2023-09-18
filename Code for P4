@@ -67,7 +67,7 @@ for line in file:
     count += 1
     
     # removes lines without date
-    if "GET" in line:
+    if "[" in line:
         pass
     else:
         continue
@@ -109,7 +109,7 @@ for line in file:
     count += 1
     
     # removes lines without date
-    if "GET" in line:
+    if "[" in line:
         pass
     else:
         continue
@@ -153,7 +153,7 @@ for line in file:
     count += 1
     
     # removes lines without date
-    if "GET" in line:
+    if "[" in line:
         pass
     else:
         continue
@@ -195,7 +195,7 @@ for line in file:
     count += 1
     
     # removes lines without status codes
-    if "GET" in line:
+    if "[" in line:
         pass
     else:
         continue
@@ -227,7 +227,7 @@ for line in file:
     count += 1
     
     # removes lines without status codes
-    if "GET" in line:
+    if "[" in line:
         pass
     else:
         continue

@@ -301,4 +301,36 @@ with open("python.txt", "r+") as file:
     file.truncate(filesize)
 file.close()
 
-print('The total number of requests are:', total_requests)
+
+
+
+# Separating log file by months
+
+log_file = "python.txt"
+
+# creates a dictionary to hold file handles for each month
+output_files = {}
+
+# matches the month 
+month_pattern = r'(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)'
+
+# function to get the output file for a given month
+def get_output_file(month):
+    if month not in output_files:
+        output_file_name = f"{month}_log.txt"
+        output_files[month] = open(output_file_name, "w")
+    return output_files[month]
+
+# Read the log file 
+with open(log_file, "r") as infile:
+    for line in infile:
+        # Extract the month from the line
+        match = re.search(month_pattern, line)
+        if match:
+            month = match.group()
+            output_file = get_output_file(month)
+            output_file.write(line)
+
+# Close all output files
+for month, file in output_files.items():
+    file.close()

@@ -289,5 +289,4 @@ print("The least-requested file was", str(least_common[0]) + "and was requested"
 # Cleanup
 with open("python.txt", "r+") as file:
     file.truncate(filesize)
-print(filesize)
 file.close()
